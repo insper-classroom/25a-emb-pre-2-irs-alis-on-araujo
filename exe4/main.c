@@ -11,14 +11,13 @@ volatile char green_flag = 0;
 
 void btn_callback(uint gpio, uint32_t events) {
   if (events == 0x4) { // fall edge
-    if (gpio == BTN_PIN_R){
       red_flag = 1;
     }
-    else if (gpio == BTN_PIN_G){
+
+  else if (events == 0x8) { // rise edge
       green_flag = 1;
     }
   }
-}
 
 int main() {
   stdio_init_all();
